@@ -17,93 +17,36 @@
 
 <body>
     <header>
-        <input type="text" class="form-control form-inline" placeholder="这里是问卷标题">
+        <input type="text" class="form-control form-inline questionnaire-title"   data-questionnaireId=100 placeholder="这里是问卷标题">
     </header>
     <hr>
     <!--编辑区域 -->
     <main>
-        <!-- <div class="question-list">
-            <div class="question">
-                <div class="que-title">
-                    Q
-                    <i>1</i>
-                    <input type="text" class="" value="" placeholder="没道题目的标题">
-                </div>
-                <ol>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                </ol>
-                <div class="option-add">
-                    添加选项
-                </div>
+        <div class="question">
+            <div class="que-title">
+                Q
+                <i>1</i>
+                <input type="text" class="" value="" placeholder="没道题目的标题">
+                <button class="btn btn-danger que-remove">删除该题</button>
             </div>
-            <div class="question">
-                <div class="que-title">
-                    Q
-                    <i>1</i>
-                    <input type="text" class="" value="" placeholder="没道题目的标题">
-                </div>
-                <ol>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                </ol>
-                <div class="option-add">
-                    添加选项
-                </div>
+            <ol>
+                <li class="que-option">
+                    <input type="text" name="" value="" placeholder="每个选项的内容">
+                    <button type="button" class="btn btn-danger">删除</button>
+                </li>
+                <li class="que-option">
+                    <input type="text" name="" value="" placeholder="每个选项的内容">
+                    <button type="button" class="btn btn-danger">删除</button>
+                </li>
+                <li class="que-option">
+                    <input type="text" name="" value="" placeholder="每个选项的内容">
+                    <button type="button" class="btn btn-danger">删除</button>
+                </li>
+            </ol>
+            <div class="option-add">
+                添加选项
             </div>
-            <div class="question">
-                <div class="que-title">
-                    Q
-                    <i>1</i>
-                    <input type="text" class="" value="" placeholder="没道题目的标题">
-                </div>
-                <ol>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                    <li class="que-option">
-                        <input type="text" name="" value="" placeholder="每个选项的内容">
-                        <button type="button" class="btn btn-danger">删除</button>
-                    </li>
-                </ol>
-                <div class="option-add">
-                    添加选项
-                </div>
-            </div>
-            <div class="question">
-                <div class="que-title">
-                    Q
-                    <i>1</i>
-                    <input type="text" class="" value="" placeholder="没道题目的标题">
-                </div>
-                <textarea name="name" rows="8" cols="80" placeholder="问答题内容"></textarea>
-            </div>
-        </div> -->
+        </div>
     </main>
     <hr>
     <div class="question-tool">
@@ -114,9 +57,17 @@
             添加新问题
         </div>
     </div>
+    <footer>
+        <button class="btn btn-success btn-radio questionnaire-save">保存问卷</button>
+        <button class="btn btn-success btn-radio questionnaire-revert">还原</button>
+    </footer>
+    <script src="config.js" charset="utf-8"></script>
     <script src="question.js" charset="utf-8"></script>
     <script src="option.js" charset="utf-8"></script>
     <script type="text/javascript">
+        var __main = function() {
+            var que = Que.create();
+        }
     </script>
 </body>
 </html>
