@@ -21,8 +21,13 @@ Option.prototype = {
             var ol = self.siblings('ol');
             // log(ol, 'ol')
             var counts = ol.find('.que-option').length;
-            if (counts >= 10) {
-                alert('最多只能设置10个选项');
+            if (counts >= 5) {
+                swal({
+                    title: "选项数量达到上限",
+                    text: "最多设置 10 个选项",
+                    confirmButtonText: "确认"
+                });
+                // alert('最多只能设置10个选项');
             } else {
                 var t = _t.template();
                 // log(t)

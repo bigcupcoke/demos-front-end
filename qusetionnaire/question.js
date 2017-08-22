@@ -63,8 +63,7 @@ Que.prototype = {
         var t = `
         <div class="question" data-type=${type}>
             <div class="que-title">
-                Q
-                <i>${i}</i>${describe[type]}
+                Q<i>${i}</i>  (${describe[type]})
                 <input type="text" class="que-describe" value="" placeholder="没道题目的标题">
                 <button class="btn btn-danger que-remove">删除该题</button>
             </div>
@@ -109,6 +108,8 @@ Que.prototype = {
     bindEvents: function() {
         this.add();
         this.remove();
+        this.save();
+        this.revert();
     },
 
     templateByType: function(type) {
@@ -120,7 +121,7 @@ Que.prototype = {
             "1": _t.templateByOption(i, 1),
             "2": _t.templateByText(i),
         }
-        return template[type];
+        return template[t];
     },
 
     count: function() {
@@ -141,16 +142,20 @@ Que.prototype = {
 
     save: function() {
         //  id 是 string 形式
-        var id = $('.questionnaire-title').data('data-questionnaireId');
-        var title = $('.questionnaire-title').text();
-        var ques = $('.question');
-        var qsInfo = [
+        $('.questionnaire-save').on('click', function() {
+            // var info = this.infoAll();
+            // return info;
+            Popup.save();
+        })
+    },
 
-        ]
-        var o = {
-
-        }
-
+    revert: function() {
+        //  id 是 string 形式
+        $('.questionnaire-revert').on('click', function() {
+            // var info = this.infoAll();
+            // return info;
+            Popup.revert();
+        })
     },
 
     infoAll: function() {
