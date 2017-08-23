@@ -1,7 +1,8 @@
 //  option 类
-var Option = function() {
+var Option = function(form) {
     this.init();
 }
+
 
 Option.create = function() {
     var instance =  new this();
@@ -50,7 +51,7 @@ Option.prototype = {
         var t = `
             <li class="que-option">
                 <input type="text" name="" value="" placeholder="每个选项的内容">
-                <button type="button" class="btn btn-danger option-remove">删除</button>
+                <button type="button" class="btn btn-default  btn-sm option-remove">删除</button>
             </li>
         `
         return t;
@@ -66,5 +67,3 @@ Option.prototype = {
         this.bindEvents();
     },
 }
-
-var Option = Option.create();

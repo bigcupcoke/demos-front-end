@@ -14,17 +14,26 @@
         .question:hover {
             background: gray;
         }
+        .debug-tool {
+            position: fixed;
+            top: 100px;
+            right: 90px;
+            /*border: 1px solid;*/
+        }
+        .question-tool {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <input type="text" class="form-control form-inline questionnaire-title"   data-questionnaireId=100 placeholder="这里是问卷标题">
+        <input type="text" class="form-control form-inline questionnaire-title"   data-questionnaireid="100" placeholder="这里是问卷标题">
     </header>
     <hr>
     <!--编辑区域 -->
     <main>
-        <div class="question">
+        <!-- <div class="question">
             <div class="que-title">
                 Q
                 <i>1</i>
@@ -48,7 +57,7 @@
             <div class="option-add">
                 添加选项
             </div>
-        </div>
+        </div> -->
     </main>
     <hr>
     <div class="question-tool">
@@ -63,14 +72,45 @@
         <button class="btn btn-success questionnaire-save">保存问卷</button>
         <button class="btn btn-success questionnaire-revert">还原</button>
     </footer>
+    <div class="debug-tool">
+        <button type="button" name="button">debug</button>
+    </div>
     <script src="config.js" charset="utf-8"></script>
     <script src="popup.js" charset="utf-8"></script>
     <script src="question.js" charset="utf-8"></script>
     <script src="option.js" charset="utf-8"></script>
     <script type="text/javascript">
+
         var __main = function() {
             var que = Que.create();
+            var option = Option.create();
+
+            var enableDebugMode = function(debugMode) {
+                if (debugMode) {
+                    $('.btn-radio').click();
+                    $('.btn-radio').click();
+                    // $('.btn-radio').click();
+                    // $('.btn-radio').click();
+
+
+                    config.debug = function() {
+                        var i = que.infoAll();
+                        log('i info', i);
+                        // log('i info', i.question[0]);
+                    }
+                    $('.debug-tool').on('click', function() {
+                        log('click debug ok')
+                        config.debug && config.debug()
+                    })
+                } else {
+                    window.log = function() {};
+                    $('.bebug-tool').remove();
+                }
+            }
+            enableDebugMode(true);
         }
+
+        __main();
     </script>
 </body>
 </html>

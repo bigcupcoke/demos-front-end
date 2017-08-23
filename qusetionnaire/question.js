@@ -1,6 +1,9 @@
 
 
-var Que = function() {
+var Que = function(form) {
+    this.title = form.title || ''
+    this.id = form.id || ''
+    this.questions = form.question || []
     this.init();
 }
 
@@ -65,20 +68,16 @@ Que.prototype = {
             <div class="que-title">
                 Q<i>${i}</i>  (${describe[type]})
                 <input type="text" class="que-describe" value="" placeholder="没道题目的标题">
-                <button class="btn btn-danger que-remove">删除该题</button>
+                <button class="btn btn-default btn-sm que-remove">删除该题</button>
             </div>
             <ol>
                 <li class="que-option">
-                    <input type="text" name="" value="" placeholder="每个选项的内容">
-                    <button type="button" class="btn btn-danger option-remove">删除</button>
+                    <input type="text" class="option-content" value="" placeholder="每个选项的内容">
+                    <button type="button" class="btn btn-default btn-sm option-remove">删除</button>
                 </li>
                 <li class="que-option">
                     <input type="text" class="option-content" value="" placeholder="每个选项的内容">
-                    <button type="button" class="btn btn-danger option-remove">删除</button>
-                </li>
-                <li class="que-option">
-                    <input type="text" name="" value="" placeholder="每个选项的内容">
-                    <button type="button" class="btn btn-danger option-remove">删除</button>
+                    <button type="button" class="btn btn-default  btn-sm option-remove">删除</button>
                 </li>
             </ol>
             <div class="option-add">
@@ -92,14 +91,14 @@ Que.prototype = {
     templateByText: function(index) {
         var i = index;
         var t = `
-        <div class="question">
+        <div class="question" data-type=2>
             <div class="que-title">
-                Q
-                <i>${i}</i>(问答题)
-                <input type="text" class="" value="" placeholder="没道题目的标题">
-                <button class="btn btn-danger que-remove">删除该题</button>
+                Q<i>${i}</i> (问答题)
+                <button class="btn btn-default btn-sm que-remove">删除该题</button>
             </div>
-            <textarea name="name" rows="8" cols="80" placeholder="问答题内容"></textarea>
+            <div  class="que-option textarea-option">
+                <textarea class="option-content" rows="8" cols="80" placeholder="问答题内容"></textarea>
+            </div>
         </div>
         `
         return t;
@@ -159,8 +158,8 @@ Que.prototype = {
     },
 
     infoAll: function() {
-        var title = $('.questionnaire-title').text();
-        var id = $('.questionnaire-title').data('questionnaireId');
+        var title = $('.questionnaire-title').val();
+        var id = $('.questionnaire-title').data('questionnaireid');
         var quesInfo = this.infoFromQues(id);
         return {
             title: title,
@@ -174,11 +173,11 @@ Que.prototype = {
         var qs = $('.question');
         var qId = questionnaireId;
         var r = [];
-        for (var i = 0; i < all.length; i++) {
-            var e = $(all[i]);
+        for (var i = 0; i < qs.length; i++) {
+            var e = $(qs[i]);
             var type = e.data('type');
             var id = qId + e.find('i').text();
-            var describe = e.find('que-describe').text();
+            var describe = e.find('.que-describe').val();
             var optionsInfo =_t.infoFromOptions(id, e);
             var o = {
                 id: id,
@@ -194,13 +193,14 @@ Que.prototype = {
     infoFromOptions: function(queId, que) {
         var p = que;
         var pid = queId;
-        var options = p.find('que-option');
+        var options = p.find('.que-option');
         var r = [];
         for (var i = 0; i < options.length; i++) {
             var e = $(options[i]);
             var oId = i + 1;
             var id = pid + oId;
-            var content = e.find('input').text();
+            var content = e.find('.option-content').val();
+            // log(content,  'content');
             var o = {
                 id: id,
                 options: content,
@@ -210,12 +210,3 @@ Que.prototype = {
         return r;
     },
 }
-
-var que = Que.create();
-
-$('.btn-radio').click();
-$('.btn-radio').click();
-$('.btn-radio').click();
-$('.btn-radio').click();
-
-//  问卷由个title
