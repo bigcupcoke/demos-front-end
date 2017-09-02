@@ -1,41 +1,58 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>tomatos</title>
-        <link rel="stylesheet" href="../plugins/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/master.css" media="screen" title="no title">
-        <script src="../plugins/jquery.min.js" charset="utf-8"></script>
-        <script src="../plugins/bootstrap.min.js" charset="utf-8"></script>
-        <script src="../js/countdown.js" charset="utf-8"></script>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li class="nav-tab tab-task">Task</li>
-                    <li class="nav-tab">current</li>
-                    <li class="nav-tab">statistics</li>
-                    <li class="nav-tab">settings</li>
-                    <li class="nav-tab">about</li>
-                </ul>
-            </nav>
-        </header>
-        <main>
-            <div class="tab-content task">
-                <div id="timer" class="">
 
+<head>
+    <meta charset="utf-8">
+    <title>tomatos</title>
+    <link rel="stylesheet" href="../plugins/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/master.css" media="screen" title="no title">
+    <script src="../plugins/jquery.min.js" charset="utf-8"></script>
+    <script src="../plugins/bootstrap.min.js" charset="utf-8"></script>
+    <script src="../static/js/countdown.js" charset="utf-8"></script>
+    <script src="../static/js/tomato.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="">任务</a>
                 </div>
-                <button type="button" id='tomato-add' class="button-tomato">
+                <div class="navbar-collapse collapse" role="navigation">
+                    <ul class="nav navbar-nav">
+                        <li><a href="">Bootstrap3中文文档</a></li>
+                        <li><a href="">Bootstrap 4.0 预览</a></li>
+                        <li><a href="">Less 教程</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-sm">
+                        <li><a href="">jQuery API</a></li>
+                        <li><a href="">网站实例</a></li>
+                        <li><a href="">关于</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="tab-content task">
+            <div id="timer" class=""></div>
+            <button type="button" id='tomato-add' class="btn btn-primary button-tomato">
                     来一个番茄
-                </button>
-                <div class="tomato-cell">
-                  <ul>
+            </button>
+            <div class="tomato-cell">
+                <ul>
                     <li class="tomato-cell">
                         <div class="tomato-task">完成我的todo</div>
                         <div class="tomato-current">内部中断</div>
                         <div class="tomato-process">
-                          1/3
+                            1/3
                         </div>
                         <div class="tomoato-stop">
                             stop
@@ -47,66 +64,22 @@
                             del
                         </div>
                     </li>
-                  </ul>
-                </div>
+                </ul>
             </div>
-            <div class="tab-content">
+        </div>
+    </main>
+    <script type="text/javascript">
 
-            </div>
-            <div class="tab-content">
+        const init = function() {
+            var t = Tomato.new()
+        }
 
-            </div>
-            <div class="tab-content">
+        const __main = () => {
+            init()
 
-            </div>
-            <div class="tab-content">
+        }
 
-            </div>
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    					&times;
-                    				</button>
-                        <h4 class="modal-title" id="myModalLabel">
-                    					     模态框（Modal）标题
-                    				</h4>
-                    </div>
-                    <div class="modal-body">
-                        在这里添加一些文本
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    				</button>
-                        <button type="button" class="btn btn-primary">
-                    					     提交更改
-                    				</button>
-                    </div>
-                </div>
-                <!-- /.modal-content -->
-            </div>
-    <!-- /.modal -->
-        </main>
-        <script type="text/javascript">
-            const initTimer = () => {
-                const container = document.querySelector('#timer')
-                // console.log("crash", container)
-                const info = {
-                    expires: '2017/08/01, 01:30:00',
-                    container: container,
-                }
-                const timer = TickTac.create(info)
-            }
-
-            const __main = () => {
-                initTimer()
-            }
-
-            __main()
-            $('#tomato-add').on('click', function() {
-              $('#tomato-add').modal('show')
-            })
-        </script>
-    </body>
+        __main()
+    </script>
+</body>
 </html>

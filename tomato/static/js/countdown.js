@@ -65,3 +65,15 @@ class TickTac {
         clearTimeout(this.downId)
     }
 }
+
+
+const initTimer = () => {
+    const container = document.querySelector('#timer')
+    // console.log("crash", container)
+    const info = {
+        expires: '2017/08/01, 01:30:00',
+        container: container,
+    }
+    const timer = TickTac.create(info)
+}
+initTimer()

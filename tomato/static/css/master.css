@@ -9,11 +9,19 @@
 .inited #time span {
     visibility: visible;
 }
-1xt4y.css:1
-#time span {
-    /* visibility: hidden; */
+.tomato-nav {
+    display: flex;
+    justify-content: space-between;
+    color: gray;
+    font-size: 2.5rem;
 }
-1xt4y.css:1
+.tomato-nav > li {
+    display: inline-block;
+}
+.tomato-nav > li:hover {
+    color: white;
+}
+
 #time span {
     font-size: 72px;
     line-height: 144px;
