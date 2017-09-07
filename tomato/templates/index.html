@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <title>tomatos</title>
@@ -8,10 +7,7 @@
     <link rel="stylesheet" href="../static/css/master.css" media="screen" title="no title">
     <script src="../plugins/jquery.min.js" charset="utf-8"></script>
     <script src="../plugins/bootstrap.min.js" charset="utf-8"></script>
-    <script src="../static/js/countdown.js" charset="utf-8"></script>
-    <script src="../static/js/tomato.js" charset="utf-8"></script>
 </head>
-
 <body>
     <header>
         <div class="navbar navbar-inverse">
@@ -67,7 +63,13 @@
                 </ul>
             </div>
         </div>
+        <div class="tomato-task">
+
+        </div>
     </main>
+    <script src="../static/js/countdown.js" charset="utf-8"></script>
+    <script src="../static/js/tomato.js" charset="utf-8"></script>
+    <script src="../static/js/config.js" charset="utf-8"></script>
     <script type="text/javascript">
 
         const init = function() {
@@ -76,7 +78,7 @@
 
         const __main = () => {
             init()
-
+            $('#tomato-add').click()
         }
 
         __main()
