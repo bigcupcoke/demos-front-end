@@ -17,6 +17,20 @@ Que.prototype = {
     //  原型指向到 Que
     constructor: Que,
 
+    initTitle: function() {
+        var _t = this;
+        $('.questionnaire-title').val(_t.title);
+        $('.questionnaire-title').data('questionnaireid', _t.id);
+    },
+
+
+    initQues: function() {
+        var qs = this.questions;
+        qs.forEach((function() {
+
+        }))
+    },
+
     add: function(type) {
         var _t = this;
         $('.question-tool').on('click', 'button', function() {
